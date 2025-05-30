@@ -44,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 300,
               width: 300,
             ),
+            Text("https://pokeapi.co/api/v2/pokemon-species/$random/"),
           ],
         ),
       ),
