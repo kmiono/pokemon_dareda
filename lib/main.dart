@@ -12,18 +12,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreenAccent),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        title: 'ポケモンだーれだ',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreenAccent),
+          useMaterial3: true,
+        ),
+        home: MyHomePage(title: 'ポケモンだーれだ'));
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({
+    super.key,
+    required this.title,
+  });
 
   final String title;
 
@@ -31,9 +33,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
   var random = math.Random().nextInt(1025);
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -44,9 +46,15 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 300,
               width: 300,
             ),
-            Text("https://pokeapi.co/api/v2/pokemon-species/$random/"),
           ],
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.refresh),
+        onPressed: () {
+          setState(() {});
+        },
       ),
     );
   }
