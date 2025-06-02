@@ -1,5 +1,19 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
+import 'package:http/http.dart' as http;
+import '../model/pokeapi.dart';
+import '../const/pokeapi.dart';
+
+Future<Pokemon> fetchPokemon(int id) async {
+  final res = await http.get(Uri.parse('$pokeApiRoute/pokemon/$id'));
+  if (res.statusCode == 200) {
+    return Pokemon.fromJson(jsonDecode(res.body));
+  } else {
+    throw Exception('Failed to Load Pokemon');
+  }
+}
 
 void main() {
   runApp(const MyApp());
