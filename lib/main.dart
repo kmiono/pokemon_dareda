@@ -33,9 +33,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  @override
   var random = math.Random().nextInt(1025);
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
@@ -53,7 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.refresh),
         onPressed: () {
-          setState(() {});
+          setState(() {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => super.widget));
+          });
         },
       ),
     );
